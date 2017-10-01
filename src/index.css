@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  background: #f6f5f5;
+}
+div:nth-child(odd).list-group-item {
+	background:  #7BAFD4;
+}
+
+.glyphicon {
+	color: transparent;
+	float: right;
+	text-align: center;
+	font-size: 25px;
+
+}
+
+.list-group-item:hover .glyphicon {
+	color: black;
+}
