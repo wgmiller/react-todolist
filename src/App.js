@@ -15,7 +15,8 @@ var box = {
 }
 
 {/*Endpoint for backend*/}
-var url = 'http://0.0.0.0:5000/list'
+var test_url = 'http://0.0.0.0:5000/list'
+var url = 'http://grahams.pythonanywhere.com/list'
 
 class App extends Component {
   constructor(props) {
