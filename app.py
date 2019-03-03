@@ -26,7 +26,7 @@ def list():
 
             with sql.connect("database.db") as con:
                 cur = con.cursor()
-                cur.execute("INSERT INTO todolist (item, complete) VALUES (?,?)",(c,0) )
+                cur.execute("INSERT INTO todolist (item, complete, due_date) VALUES (?,?,DATETIME('now'))",(c,0,) )
             
                 con.commit()
                 msg = "Record successfully added"
@@ -118,7 +118,9 @@ def mark_all():
 
 def get_list():
     con = sql.connect(db)
-    con.execute('CREATE TABLE IF NOT EXISTS todolist (todo_id INTEGER PRIMARY KEY, item TEXT, complete INTEGER)')
+    con.execute('''CREATE TABLE 
+        IF NOT EXISTS todolist 
+        (todo_id INTEGER PRIMARY KEY, item TEXT, complete INTEGER, due_date TEXT)''')
     con.row_factory = sql.Row
 
     cur = con.cursor()
@@ -130,7 +132,8 @@ def get_list():
         obj = {
             'task': r["item"],
             'complete': r["complete"],
-            'id': r["todo_id"]
+            'id': r["todo_id"],
+            'due_date': r["due_date"]
         }
         items.append(obj)
     response = jsonify(items)
