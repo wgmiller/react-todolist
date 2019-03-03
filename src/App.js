@@ -71,6 +71,32 @@ class App extends Component {
     {/*this.setState({items: this.state.items.concat([t])});*/}
   }
 
+  removeTodo = (term) => {
+    var i = term.id
+    console.log('id:', i)
+    fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: i
+      })
+    })
+    .then(d => d.json())
+    .then(d => {
+      var temp = d.map(function(c){
+        return c
+      })
+      this.setState(prevState => ({
+        term: '',
+        items: temp
+      }))
+    })
+    {/*this.setState({items: this.state.items.concat([t])});*/}
+  }
+
   toggleTodo = (term) => {
     var i = term.id
     console.log('id:', i)
@@ -133,7 +159,7 @@ class App extends Component {
       <div className="App" style={box}>
         <Header/>
         <ToDoInput addTodo={this.addTodo}/>
-        <List toggleTodo={this.toggleTodo} items={this.state.items} />
+        <List toggleTodo={this.toggleTodo} removeTodo={this.removeTodo} items={this.state.items} />
         <Footer toggleAll={this.toggleAll} itemsLeft={itemsLeft} />
       </div>
     );

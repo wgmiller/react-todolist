@@ -13,9 +13,28 @@ div:nth-child(odd).list-group-item {
 	float: right;
 	text-align: center;
 	font-size: 25px;
-
 }
 
 .list-group-item:hover .glyphicon {
 	color: black;
+}
+
+[type="button"] {
+	float: right;
+	color: transparent;
+	background-color: transparent;
+}
+
+.list-group-item:hover [type="button"] {
+	color: black;
+	background-color:  #f6f5f5;
+}
+
+a {
+	float: right;
+}
+
+.list-group-item:hover a {
+	color: blue;
+	background-color:  #FFFFFF;
 }

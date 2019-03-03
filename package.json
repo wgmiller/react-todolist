@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aphrodite": "^2.2.3",
     "react": "^15.6.1",
+    "react-dates": "^18.4.0",
     "react-dom": "^15.6.1",
     "react-dragula": "^1.1.17",
     "react-scripts": "1.0.13"

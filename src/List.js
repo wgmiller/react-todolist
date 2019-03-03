@@ -26,6 +26,7 @@ class List extends React.Component {
        super(props);
        this.state = {item: ''};
        this.onInput = this.onInput.bind(this);
+       this.onRemove = this.onRemove.bind(this);
   }
 
   componentDidMount(){
@@ -37,17 +38,24 @@ class List extends React.Component {
     this.props.toggleTodo(event.target)
   }
 
+  onRemove(event){
+    this.props.removeTodo(event.target);
+  }
+
   render () {
       return (
         <div style={styles.list}>
 
           {
             this.props.items && this.props.items.map((item, index) => 
-            	<div style = {item.complete ? styles.complete : null } key={index} className="list-group-item">
-            	<input name={item.task} type="checkbox" checked={item.complete} id={item.id} key={index} onClick={this.onInput}/> 
-            	{item.task}
-              <span className="glyphicon">&#8597;</span>
-            	</div>)
+              <div style = {item.complete ? styles.complete : null } key={index} className="list-group-item">
+              <input name={item.task} type="checkbox" checked={item.complete} id={item.id} key={index} onClick={this.onInput}/> 
+              {item.task}
+              <button type="button" className="hover btn" id={item.id} onClick={this.onRemove}>
+              Remove 
+              </button>
+              {/* <span className="glyphicon">&#8597;</span>*/}
+              </div>)
           }
 
         </div>
