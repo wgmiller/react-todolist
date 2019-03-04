@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import dragula from 'react-dragula'
-
+import moment from 'moment'
 
 var styles = {
   list: {
@@ -17,6 +17,9 @@ var styles = {
   complete: {
   	textDecoration: 'line-through',
   	color: '#ccc'
+  },
+  checkbox: {
+    margin: '0% 1%'
   }
 }
 
@@ -49,7 +52,8 @@ class List extends React.Component {
           {
             this.props.items && this.props.items.map((item, index) => 
               <div style = {item.complete ? styles.complete : null } key={index} className="list-group-item">
-              <input name={item.task} type="checkbox" checked={item.complete} id={item.id} key={index} onClick={this.onInput}/> 
+              <span>{moment(item.due_date).format("MM/DD/YYYY")}</span>
+              <input  style={styles.checkbox} name={item.task} type="checkbox" checked={item.complete} id={item.id} key={index} onClick={this.onInput}/> 
               {item.task}
               <button type="button" className="hover btn" id={item.id} onClick={this.onRemove}>
               Remove 

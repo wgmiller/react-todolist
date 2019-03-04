@@ -35,7 +35,7 @@ class ToDoInput extends React.Component {
        this.state = {
         item: '',
         date: props.initialDate,
-        focused: props.autoFocus
+        focused: props.autoFocus  
        };
   }
 
@@ -45,7 +45,7 @@ class ToDoInput extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.addTodo(this.state.item);
+    this.props.addTodo(this.state);
     this.setState({item: ''}, () => this.refs.item.focus());
   }
 

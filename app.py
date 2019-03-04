@@ -23,10 +23,11 @@ def list():
         try:
             cjson = request.get_json()
             c = cjson.get('contents')
+            date = cjson.get('due_date')
 
             with sql.connect("database.db") as con:
                 cur = con.cursor()
-                cur.execute("INSERT INTO todolist (item, complete, due_date) VALUES (?,?,DATETIME('now'))",(c,0,) )
+                cur.execute("INSERT INTO todolist (item, complete, due_date) VALUES (?,?,DATETIME(?))",(c,0,date,) )
             
                 con.commit()
                 msg = "Record successfully added"
