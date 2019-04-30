@@ -51,9 +51,7 @@ class ToDoInput extends React.Component {
 
   handleDateChange = (date) => {
     console.log(date)
-    this.setState({ date });
-    console.log(this.state)
-
+    this.setState({ date }, function() { console.log("setState completed", this.state) });
   }
 
   render () {

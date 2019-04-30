@@ -56,7 +56,7 @@ class App extends Component {
       },
       body: JSON.stringify({
         contents: term.item,
-        due_date: term.due_date
+        due_date: term.date._d
       })
     })
     .then(d => d.json())
